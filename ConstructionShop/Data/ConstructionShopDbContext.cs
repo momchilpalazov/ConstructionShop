@@ -6,11 +6,14 @@ using System.Text;
 
 namespace ConstructionShop.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ConstructionShopDbContext : IdentityDbContext
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        public ConstructionShopDbContext(DbContextOptions<ConstructionShopDbContext> options)
             : base(options)
         {
         }
+
+        public DbSet<Category> Categories { get; set; }
+
     }
 }
