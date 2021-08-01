@@ -1,14 +1,14 @@
-﻿@model IEnumerable<ConstructionShop.Data.Category>
+﻿@model IEnumerable<ConstructionShop.Data.ApplicationType>
 
 
 <div class="container p-3">
     <div class="row pt-4">
         <div class="col-6">
-            <h2 class="text-primary">Category List</h2>
+            <h2 class="text-primary">Application Type List</h2>
         </div>
         <div class="col-6 text-right">
-            <a asp-controller="Category" asp-action="Create" class="btn btn-primary">
-            Create New Category
+            <a  asp-action="Create" class="btn btn-primary">
+            Create New Application Type
             </a>
 
             
@@ -24,11 +24,9 @@
             <thead>
                 <tr>
                     <th>
-                        Category Name
+                        Name
                     </th>
-                    <th>
-                        Display Order
-                    </th>
+                    
                     <th></th>
                 </tr>
             </thead>
@@ -37,10 +35,8 @@
                 {
                     <tr>
                         <td width="50%">@obj.Name</td>
-                        <td width="30%">@obj.DisplayOrder</td>
-                        <td class="text-center">
-                            
-                        </td>
+                       
+                        
                     </tr>
                 }
             </tbody>
@@ -48,7 +44,7 @@
     }
     else
     {
-        <p> No category exists.</p>
+        <p> No application type exists.</p>
     }
 
 </div>

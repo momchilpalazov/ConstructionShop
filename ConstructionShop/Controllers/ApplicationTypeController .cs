@@ -7,19 +7,19 @@ using System.Threading.Tasks;
 
 namespace ConstructionShop.Controllers
 {
-    public class CategoryController : Controller
+    public class ApplicationTypeController : Controller
     {
 
         private readonly ConstructionShopDbContext data;
 
-        public CategoryController(ConstructionShopDbContext db)
+        public ApplicationTypeController(ConstructionShopDbContext db)
         {
             data = db;
         }
 
         public IActionResult Index()
         {
-            IEnumerable<Category> categoryList = data.Categories;
+            IEnumerable<ApplicationType> categoryList = data.ApplicationTypes;
             return View(categoryList);
         }
 
@@ -33,9 +33,9 @@ namespace ConstructionShop.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Category obj)
+        public IActionResult Create(ApplicationType obj)
         {
-            data.Categories.Add(obj);
+            data.ApplicationTypes.Add(obj);
             data.SaveChanges();
             return RedirectToAction("Index");
         }
