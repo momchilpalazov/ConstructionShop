@@ -35,10 +35,92 @@ namespace ConstructionShop.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Category obj)
         {
-            data.Categories.Add(obj);
-            data.SaveChanges();
-            return RedirectToAction("Index");
+
+            if (ModelState.IsValid)
+            {
+                data.Categories.Add(obj);
+                data.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(obj);
+            
         }
 
+        //GET For Edit
+        public IActionResult Edit(int? id)
+        {
+            if (id==null || id==0)
+            {
+                return NotFound();
+            }
+
+            var obj =data.Categories.Find(id);
+
+            if (obj==null)
+            {
+                return NotFound();
+            }
+
+            return View(obj);
+        }
+
+
+        //Post for Edit
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(Category obj)
+        {
+
+            if (ModelState.IsValid)
+            {
+                data.Categories.Update(obj);
+                data.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(obj);
+
+        }
+
+        //GET For Delete
+        public IActionResult Delete(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+
+            var obj = data.Categories.Find(id);
+
+            if (obj == null)
+            {
+                return NotFound();
+            }
+
+            return View(obj);
+        }
+
+
+        //Post for Delete
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeletePost(int? id)
+        {
+            var obj = data.Categories.Find(id);
+            if (obj==null)
+            {
+                return NotFound();
+               
+            }
+
+            data.Categories.Remove(obj);
+            data.SaveChanges();
+            return RedirectToAction("Index");
+
+           
+        }
     }
 }

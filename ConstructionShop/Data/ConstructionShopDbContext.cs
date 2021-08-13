@@ -17,5 +17,8 @@ namespace ConstructionShop.Data
 
         public DbSet<ApplicationType> ApplicationTypes { get; set; }
 
+        public DbSet<Product> Products { get; set; }
+
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
     }
 }
