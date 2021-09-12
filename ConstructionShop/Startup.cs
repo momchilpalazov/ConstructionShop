@@ -1,9 +1,11 @@
 using ConstructionShop.Data;
+using ConstructionShop.Uttility;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -33,6 +35,8 @@ namespace ConstructionShop
             services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddDefaultTokenProviders().AddDefaultUI()
                 .AddEntityFrameworkStores<ConstructionShopDbContext>();
+            services.AddTransient<IEmailSender, EmailSender>();
+
             services.AddHttpContextAccessor();
             services.AddSession(Options=>
             { 
