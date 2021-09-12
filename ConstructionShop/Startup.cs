@@ -30,6 +30,9 @@ namespace ConstructionShop
             services.AddDbContext<ConstructionShopDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+            services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddDefaultTokenProviders().AddDefaultUI()
+                .AddEntityFrameworkStores<ConstructionShopDbContext>();
             services.AddHttpContextAccessor();
             services.AddSession(Options=>
             { 
@@ -39,11 +42,7 @@ namespace ConstructionShop
             
             }
             );
-            services.AddDatabaseDeveloperPageExceptionFilter();
-
-            services.AddIdentity<IdentityUser,IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddDefaultTokenProviders().AddDefaultUI()
-                .AddEntityFrameworkStores<ConstructionShopDbContext>();
+            services.AddDatabaseDeveloperPageExceptionFilter();            
             services.AddControllersWithViews();
         }
 
@@ -72,6 +71,7 @@ namespace ConstructionShop
 
             app.UseEndpoints(endpoints =>
             {
+
                 endpoints.MapRazorPages();
                 endpoints.MapControllerRoute(
                     name: "default",
