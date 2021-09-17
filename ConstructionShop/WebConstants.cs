@@ -13,5 +13,7 @@ namespace ConstructionShop
 
         public static string AdminRole = "Admin";
         public static string ClientRole = "Client";
+
+        public static string EmailAdmin = "momchil.palazov@gmail.com";
     }
 }

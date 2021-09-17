@@ -16,6 +16,6 @@ namespace ConstructionShop.Models.ViewModels
 
         public ApplicationUser ApplicationUser { get; set; }
 
-        public IEnumerable<Product> ProductsList { get; set; }
+        public IList<Product> ProductsList { get; set; }
     }
 }
