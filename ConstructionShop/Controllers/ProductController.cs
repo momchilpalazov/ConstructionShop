@@ -1,5 +1,6 @@
 ﻿using ConstructionShop.Data;
 using ConstructionShop.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -12,6 +13,7 @@ using System.Threading.Tasks;
 
 namespace ConstructionShop.Controllers
 {
+    [Authorize(Roles =WebConstants.AdminRole)]
     public class ProductController : Controller
     {
         //dependency injection

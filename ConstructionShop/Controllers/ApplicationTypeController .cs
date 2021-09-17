@@ -1,4 +1,5 @@
 ﻿using ConstructionShop.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -7,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace ConstructionShop.Controllers
 {
-    
 
+    [Authorize(Roles = WebConstants.AdminRole)]
     public class ApplicationTypeController : Controller
     {
 
